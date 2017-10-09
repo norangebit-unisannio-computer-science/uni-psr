@@ -1,8 +1,8 @@
 /*
- * clientDgram.c
+ *  clientDgram.c
  *
  *  Modified on: October 9, 2017
- *      Author: zimeo
+ *  Author: zimeo
  */
 
 /*#include <sys/types.h>*/
