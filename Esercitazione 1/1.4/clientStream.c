@@ -1,8 +1,8 @@
 /*
- * clientStream.c
+ *  clientStream.c
  *
  *  Created on: October 9, 2017
- *      Author: zimeo
+ *  Author: zimeo
  */
 
 /*#include <sys/types.h>*/
@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
   /* Inizializza l'indirizzo di trasporto della socket locale (server) */
   sad.sin_family = AF_INET;
   if (argc > 2) {
-       port = atoi(argv[2]);
+      port = atoi(argv[2]);
   } else {
       port = PROTOPORT;
   }
@@ -67,6 +67,14 @@ int main(int argc, char *argv[]) {
         fprintf(stderr,"connect failed\n");
         exit(1);
    }
+   do{
+        memset(buf, 0, sizeof(buf));
+        printf("Inserisci un carattere: ");
+        scanf("%s", buf);
+        write(sd, buf, sizeof(buf));
+   }
+  
+
    /* Inizio elaborazione del messaggio di risposta */
    /* Legge dal canale i dati e li scrive nello stdout */
    n = read(sd, buf, sizeof(buf));

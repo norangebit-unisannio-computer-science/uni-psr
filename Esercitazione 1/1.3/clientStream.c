@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
   /* Inizializza l'indirizzo di trasporto della socket locale (server) */
   sad.sin_family = AF_INET;
   if (argc > 2) {
-      port = argv[2];
+      port = atoi(argv[2]);
   } else {
       port = PROTOPORT;
   }
