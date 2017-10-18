@@ -1,0 +1,11 @@
+# jetBrain IDE
+**/.idea
+**/out
+**/*.iml
+
+# Eclipse
+**/.settings
+**/bin
+**/.gitignore
+!.gitignore
+
