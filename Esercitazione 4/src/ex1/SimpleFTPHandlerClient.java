@@ -32,6 +32,10 @@ public class SimpleFTPHandlerClient implements ProtocolHandler{
                     command = LIST;
                 else if(commandLine.equalsIgnoreCase("close"))
                     command = CLOSE;
+                else if(commandLine.equalsIgnoreCase("cd"))
+                    command = CD;
+                else if(commandLine.equalsIgnoreCase("pwd"))
+                    command = PWD;
 
                 toServer.write(command);
                 switch (command){
@@ -60,6 +64,13 @@ public class SimpleFTPHandlerClient implements ProtocolHandler{
 
                         toUser.println("File trasferito con successo");
                         break;
+                    case CD:
+                        toUser.print("Inserisci il nome della directory: ");
+                        String dir = fromUser.nextLine();
+                        toServer.writeUTF(dir);
+                        break;
+                    case PWD:
+                        toUser.println(fromServer.readUTF());
                 }
             }while(command != CLOSE);
         }catch(IOException e){
@@ -86,4 +97,6 @@ public class SimpleFTPHandlerClient implements ProtocolHandler{
     private static final byte LIST = 0;
     private static final byte GET = 1;
     private static final byte CLOSE = 2;
+    private static final byte CD = 3;
+    private static final byte PWD = 4;
 }

@@ -18,12 +18,16 @@ public class SimpleFTPHandlerServer implements ProtocolHandler{
             fromClient = new DataInputStream(socket.getInputStream());
             toClient = new DataOutputStream(socket.getOutputStream());
             File f = null;
+            String dir = "";
             int command = 0;
             do{
                 command = fromClient.read();
                 switch (command){
                     case LIST:
-                        f = new File(".");
+                        if(dir.equals(""))
+                            f = new File(".");
+                        else
+                            f = new File(dir);
                         String[] list = f.list();
                         toClient.writeInt(list.length);
                         for(int i=0; i<list.length; i++)
@@ -31,7 +35,7 @@ public class SimpleFTPHandlerServer implements ProtocolHandler{
                         break;
                     case GET:
                         String fileName = fromClient.readUTF();
-                        f = new File(fileName);
+                        f = new File(dir+fileName);
                         if(!f.exists())
                             toClient.writeLong(0);
                         else{
@@ -50,6 +54,20 @@ public class SimpleFTPHandlerServer implements ProtocolHandler{
 
                             fis.close();
                         }
+                        break;
+                    case CD:
+                        String newDir = fromClient.readUTF();
+                        if(!newDir.equals(".."))
+                            dir = dir.concat(newDir+"/");
+                        else{
+                            int i=dir.length()-2;
+                            for(; i>0 && dir.charAt(i)!='/'; i--){}
+                            dir = dir.substring(0, i);
+                            dir = dir.concat("/");
+                        }
+                        break;
+                    case PWD:
+                        toClient.writeUTF(dir);
                         break;
                 }
             }while(command != CLOSE);
@@ -74,4 +92,6 @@ public class SimpleFTPHandlerServer implements ProtocolHandler{
     private static final byte LIST = 0;
     private static final byte GET = 1;
     private static final byte CLOSE = 2;
+    private static final byte CD = 3;
+    private static final byte PWD = 4;
 }
