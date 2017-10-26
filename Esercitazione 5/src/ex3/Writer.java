@@ -26,14 +26,17 @@ public class Writer extends Thread {
             outPeer = new PrintStream(socket.getOutputStream());
             String str = null;
             do{
-                System.out.print("You: ");
                 str = inUser.nextLine();
                 outPeer.println(str);
             } while(!str.endsWith("."));
         }catch(IOException e){
             e.printStackTrace();
         }finally {
-            outPeer.close();
+            try{
+                socket.shutdownOutput();
+            }catch (IOException e){}
+            if(inUser!=null)
+                inUser.close();
         }
 
     }

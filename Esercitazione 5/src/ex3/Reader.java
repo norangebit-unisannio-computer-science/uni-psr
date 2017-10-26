@@ -27,12 +27,18 @@ public class Reader extends Thread {
             String str = null;
             do{
                 str = inPeer.nextLine();
-                outUser.println("peer: "+str);
+                outUser.print("peer: ");
+                outUser.println(str);
             }while(!str.endsWith("."));
+            outUser.println("Peer: finished");
         }catch(IOException e){
             e.printStackTrace();
         }finally {
-            inPeer.close();
+            try{
+                socket.shutdownInput();
+            }catch (IOException e){}
+            if(outUser!=null)
+                outUser.close();
         }
     }
 
