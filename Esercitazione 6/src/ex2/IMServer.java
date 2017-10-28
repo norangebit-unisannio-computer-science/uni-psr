@@ -27,12 +27,14 @@ public class IMServer {
 
     public IMServer(int port) throws Exception{
         welcomeSocket = new ServerSocket(port);
+        rooms = new HashMap<String, Room>();
+
     }
 
     public void start() throws IOException{
-        Room room = new Room();
         while(true){
             Socket connectionSocket = welcomeSocket.accept();
+            Room room = selectionRoom(connectionSocket);
             room.addSocket(connectionSocket);
             ProtocolHandler ph = new IMServerHandler(connectionSocket, room);
             ph.handle();
@@ -40,6 +42,15 @@ public class IMServer {
 
     }
 
+    private Room selectionRoom(Socket socket) throws IOException{
+        String nomeRoom = new Scanner(socket.getInputStream()).nextLine();
+        if(!rooms.containsKey(nomeRoom))
+            rooms.put(nomeRoom, new Room(nomeRoom));
+
+        return rooms.get(nomeRoom);
+    }
+
     private ServerSocket welcomeSocket;
+    private HashMap<String, Room> rooms;
 
 }

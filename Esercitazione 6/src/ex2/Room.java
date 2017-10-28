@@ -14,7 +14,8 @@ import java.util.HashMap;
 
 public class Room {
 
-	public Room() {
+	public Room(String nome) {
+		this.nome = nome;
 		clients = new HashMap<Integer, PrintStream>();
 	}
 
@@ -29,6 +30,7 @@ public class Room {
 	}
 
 	private HashMap<Integer, PrintStream> clients;
+	private String nome;
 
 
 }
