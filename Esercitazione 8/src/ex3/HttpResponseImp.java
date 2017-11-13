@@ -8,11 +8,13 @@ package ex3;
  */
 
 import java.io.*;
+import java.util.Date;
 
 public class HttpResponseImp implements HttpResponse {
 
 	public HttpResponseImp(OutputStream out) {
 		this.out = out;
+		this.pw = new PrintWriter(out);
 	}
 
 	@Override
@@ -22,25 +24,26 @@ public class HttpResponseImp implements HttpResponse {
 
 	@Override
 	public PrintWriter getWriter() throws IOException {
-		return new PrintWriter(out);
+		return pw;
 	}
 
 	@Override
 	public void setContentType(String cType) {
 		contentTypeLine+=cType+CRLF;
+		pw.write(contentTypeLine);
 	}
 
 	@Override
 	public void setContentLength(int cLength) {
 		contentLengthLine+=cLength;
+		pw.write(contentLengthLine);
 	}
 
 	@Override
 	public void flushHeader() throws IOException {
-		PrintStream ps = new PrintStream(out);
-		ps.print(statusLine);
-		ps.print(contentTypeLine);
-		ps.print(CRLF);
+		pw.write(connectionLine);
+		pw.print(CRLF);
+		pw.flush();
 	}
 
 	@Override
@@ -51,6 +54,7 @@ public class HttpResponseImp implements HttpResponse {
 	@Override
 	public void setStatusLine(String status) {
 		statusLine = status+CRLF;
+		pw.write(statusLine);
 	}
 
 	@Override
@@ -79,7 +83,15 @@ public class HttpResponseImp implements HttpResponse {
 		out.close();
 	}
 
+	@Override
+	public void setlastModifiedLine(File file) {
+		lastModifiedLine+= new Date(file.lastModified()) + CRLF;
+		pw.write(lastModifiedLine);
+	}
+
 	private OutputStream out;
+	private PrintWriter pw;
+	private String lastModifiedLine = "Last-Modified: ";
 	private String connectionLine = "Connection: ";
 	private String statusLine;
 	private String contentTypeLine = "Content-Type: " ;

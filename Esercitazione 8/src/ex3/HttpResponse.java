@@ -35,4 +35,6 @@ public interface HttpResponse {
 
 	public void sendFile(File file) throws Exception;
 
+	public void setlastModifiedLine(File file);
+
 }

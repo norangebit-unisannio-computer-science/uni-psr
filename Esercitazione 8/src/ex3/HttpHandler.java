@@ -47,6 +47,7 @@ class HttpHandler implements ProtocolHandler {
 			if(resurce.exists()){
 				response.setStatusLine("HTTP/1.1 200 OK");
 				response.setContentType(contentType(request.getFileName()));
+				response.setlastModifiedLine(resurce);
 
 				response.flushHeader();
 				response.sendFile(resurce);
