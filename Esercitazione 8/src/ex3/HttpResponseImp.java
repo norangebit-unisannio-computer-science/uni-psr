@@ -8,7 +8,6 @@ package ex3;
  */
 
 import java.io.*;
-import java.util.Date;
 
 public class HttpResponseImp implements HttpResponse {
 
@@ -18,12 +17,12 @@ public class HttpResponseImp implements HttpResponse {
 
 	@Override
 	public OutputStream getOutputStream() throws IOException {
-		return null;
+		return out;
 	}
 
 	@Override
 	public PrintWriter getWriter() throws IOException {
-		return null;
+		return new PrintWriter(out);
 	}
 
 	@Override
@@ -33,7 +32,7 @@ public class HttpResponseImp implements HttpResponse {
 
 	@Override
 	public void setContentLength(int cLength) {
-
+		contentLengthLine+=cLength;
 	}
 
 	@Override
@@ -84,6 +83,7 @@ public class HttpResponseImp implements HttpResponse {
 	private String connectionLine = "Connection: ";
 	private String statusLine;
 	private String contentTypeLine = "Content-Type: " ;
+	private String contentLengthLine = "Content-Length: ";
 	private String entityBody = "<HTML>" + "<HEAD> <TITLE>Not Found</TITLE> </HEAD>" + "<BODY>File Not Found </BODY> </HTML>";
 
 	private static final String CRLF = "\r\n";

@@ -65,7 +65,10 @@ public class HttpRequestImp implements HttpRequest{
 
 	@Override
 	public String getAccept() {
-		return null;
+		String MIMEAccept="";
+		for (String s: MIMEType)
+			MIMEAccept+=s+":";
+		return MIMEAccept;
 	}
 
 	@Override
@@ -84,5 +87,5 @@ public class HttpRequestImp implements HttpRequest{
 	private String method;
 	private String userAgent;
 	private String fileName;
-
+	private String[] MIMEType = new String[]{"text/html", "image/jpeg", "image/gif", "application/octet-stream"};
 }
