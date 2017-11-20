@@ -12,9 +12,9 @@
   </head>
   <body>
   <p><a href="Hello">ex1</a></p>
-  <p><a href="form">ex2</a></p>
-  <p><a href="calc">ex3</a></p>
+  <p><a href="form.html">ex2</a></p>
+  <p><a href="calc.html">ex3</a></p>
   <p><a href="Count">ex4</a></p>
-  <p><a href="form2">ex5</a></p>
+  <p><a href="form2.html">ex5</a></p>
   </body>
 </html>

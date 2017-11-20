@@ -8,10 +8,12 @@ import java.io.PrintWriter;
 public class Ex4 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/plain");
+        resp.setContentType("text/plain; charset=UFT-8");
 
         PrintWriter out = resp.getWriter();
-        out.write(new Integer(++count).toString());
+        synchronized (this){
+            out.write(new Integer(++count).toString());
+        }
     }
     private int count = 0;
 }
