@@ -22,5 +22,25 @@
         <servlet-name>autenticazione</servlet-name>
         <url-pattern>/autenticazione</url-pattern>
     </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>app</servlet-name>
+        <servlet-class>controller.AServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>app</servlet-name>
+        <url-pattern>/app/aservlet</url-pattern>
+    </servlet-mapping>
+
+
+    <filter>
+        <filter-name>filtro</filter-name>
+        <filter-class>filter.Filter2</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>filtro</filter-name>
+        <url-pattern>/app/*</url-pattern>
+    </filter-mapping>
 
 </web-app>

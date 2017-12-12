@@ -27,7 +27,7 @@ public class Authentication extends HttpServlet {
 			session.setMaxInactiveInterval(120);
 			session.setAttribute("user", u);
 			System.out.println("in authentication " + session);
-			url = "Authenticated.jsp";
+			url = "app/aservlet";
 		}
 		else url = "NotAuthenticated.jsp";
 		
