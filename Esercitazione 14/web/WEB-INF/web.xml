@@ -7,7 +7,7 @@
         <listener-class>listener.UserMgmtContextListener</listener-class>
     </listener>
 
-    
+
     <servlet>
         <servlet-name>registrazione</servlet-name>
         <servlet-class>controller.Registration</servlet-class>
@@ -36,6 +36,26 @@
         <servlet-name>app</servlet-name>
         <url-pattern>/app/aservlet</url-pattern>
     </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>addEsame</servlet-name>
+        <servlet-class>controller.RegisterExam</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addEsame</servlet-name>
+        <url-pattern>/restricted/RegisterExam</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>list</servlet-name>
+        <servlet-class>controller.Exams</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>list</servlet-name>
+        <url-pattern>/restricted/Exams</url-pattern>
+    </servlet-mapping>
 
 
     <filter>
@@ -45,6 +65,16 @@
     <filter-mapping>
         <filter-name>filtro</filter-name>
         <url-pattern>/app/*</url-pattern>
+    </filter-mapping>
+
+
+    <filter>
+        <filter-name>restricted</filter-name>
+        <filter-class>filter.RestrictedFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>restricted</filter-name>
+        <url-pattern>/restricted/*</url-pattern>
     </filter-mapping>
 
 </web-app>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title> Registrazione esame </title>
+	</head>
+	<body>
+		<h3> Inserire informazioni dell'esame superato </h3>
+		<form action="/restricted/RegisterExam" method="POST">
+			<table>
+				<tr><td> Nome del corso: </td><td> <INPUT type="text" name="courseName" value=""></td></tr>
+				<tr><td> Nome del docente: </td><td> <INPUT type="text" name="teacherName" value=""></td></tr>
+				<tr><td> Data dell'esame: </td><td> <INPUT type="date" name="examDate" value=""></td></tr>
+				<tr><td> <INPUT class="button" type="submit" value="Invio"> </td> <td> <INPUT class="button" type="reset" value="Cancella"> </td></tr>
+			</table>
+		</form>
+	</body>
+</html>
