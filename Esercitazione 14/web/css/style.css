@@ -1,0 +1,77 @@
+:root {
+	--main: #FF9800;
+	--main-light: #FFE0B2;
+	--main-dark: #F57C00;
+	--second: #00BCD4;
+	--second-light: #B2EBF2;
+	--text: #212121;
+}
+
+.title {
+	text-align: center;
+	color: var(--main);
+}
+
+.sub_title {
+	text-align: center;
+	color: var(--second);
+}
+
+.button {
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color: white;
+	border-color: var(--main);
+	font-size: 25px;
+}
+
+.button:hover{
+	background-color: var(--main);
+	color: white;
+}
+
+.centerH {
+	display: flex;
+	justify-content: center;
+}
+
+.centerV {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.pane {
+	background-color: var(--second-light);
+}
+
+.menu_bar{
+	background-color: var(--main);
+}
+
+.menu_item{
+	list-style-type: none;
+	float: left;
+	margin-right: 20px;
+	font-size: 20px;
+}
+
+.menu_item a {
+	color: var(--main);
+}
+
+.news_box {
+}
+
+body {
+	color: var(--text);
+}
+
+legend {
+	color: var(--main);
+}
+
+fieldset {
+	border-color: var(--second);
+}

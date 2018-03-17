@@ -7,12 +7,13 @@
 	</head>
 	<body>
 		<h3 class="title"> Inserire informazioni dell'esame superato </h3>
-		<form action="/restricted/RegisterExam" method="POST">
+		<form action="/student/RegisterExam" method="POST">
 			<div class="centerH">
 			<table>
 				<tr><td> Nome del corso: </td><td> <INPUT type="text" name="courseName" value=""></td></tr>
 				<tr><td> Nome del docente: </td><td> <INPUT type="text" name="teacherName" value=""></td></tr>
 				<tr><td> Data dell'esame: </td><td> <INPUT type="date" name="examDate" value=""></td></tr>
+				<tr><td> Voto: </td><td> <INPUT type="number" min="18" max="30" step="1" name="examVote" value=""></td></tr>
 			</table>
 			</div>
 			<div class="centerH">
