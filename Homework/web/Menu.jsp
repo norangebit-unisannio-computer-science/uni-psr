@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<ul>
-			<li class="menu_item"><a href="RegisterExam.html">Registra un esame</a></li>
+			<li class="menu_item"><a href="/RegisterExam.html">Registra un esame</a></li>
 			<li class="menu_item"><a href="/student/Exams">Lista esami</a></li>
 		</ul>
 		<br>

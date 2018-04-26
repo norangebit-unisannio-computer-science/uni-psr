@@ -13,11 +13,8 @@
             <url-pattern>/restricted/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-            <role-name>admin</role-name>
+            <role-name>root</role-name>
         </auth-constraint>
-        <user-data-constraint>
-            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
-        </user-data-constraint>
     </security-constraint>
     <login-config>
         <auth-method>BASIC</auth-method>
